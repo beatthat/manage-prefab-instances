@@ -1,6 +1,6 @@
 {
   "name": "manage-prefab-instances",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scope": "beatthat",
   "description": "fill in description",
   "main": "index.js",
