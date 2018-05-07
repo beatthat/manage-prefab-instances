@@ -1,6 +1,7 @@
 {
   "name": "manage-prefab-instances",
   "version": "1.0.0",
+  "scope": "beatthat",
   "description": "fill in description",
   "main": "index.js",
   "repository": {
@@ -31,6 +32,7 @@
     "postversion": "git push && git push --tags && npm run clean"
   },
   "dependencies": {
+    "on-apply-prefab-behaviours": "github:beatthat/on-apply-prefab-behaviours#semver:^1.0.0",
     "path": "^0.12.7",
     "unity-npm-utils": "github:beatthat/unity-npm-utils#semver:^1.0.0"
   }
