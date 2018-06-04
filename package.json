@@ -1,6 +1,6 @@
 {
   "name": "manage-prefab-instances",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scope": "beatthat",
   "description": "interfaces and helper methods for supporting a form of nested prefabs--instantiation and safe apply",
   "main": "index.js",
