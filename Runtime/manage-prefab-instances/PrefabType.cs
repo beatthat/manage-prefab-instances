@@ -1,4 +1,4 @@
-﻿namespace BeatThat.ManagePrefabInstances
+namespace BeatThat.ManagePrefabInstances
 {
 	public struct PrefabType 
 	{

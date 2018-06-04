@@ -2,7 +2,7 @@
   "name": "manage-prefab-instances",
   "version": "1.0.1",
   "scope": "beatthat",
-  "description": "fill in description",
+  "description": "interfaces and helper methods for supporting a form of nested prefabs--instantiation and safe apply",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -12,7 +12,8 @@
     "index.js",
     "scripts",
     "src",
-    "Runtime"
+    "Runtime",
+    "Samples"
   ],
   "author": "larrykirschner@gmail.com",
   "license": "MIT",
@@ -35,5 +36,6 @@
     "on-apply-prefab-behaviours": "github:beatthat/on-apply-prefab-behaviours#semver:^1.0.0",
     "path": "^0.12.7",
     "unity-npm-utils": "github:beatthat/unity-npm-utils#semver:^1.0.0"
-  }
+  },
+  "devDependencies": {}
 }

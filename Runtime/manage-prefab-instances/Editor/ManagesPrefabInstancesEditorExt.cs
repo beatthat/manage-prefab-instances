@@ -43,7 +43,7 @@ Instance Policy 'AllowApplyInstanceToParentPrefab' means Apply will bake nested 
 					default:
 						EditorGUILayout.HelpBox (@"About Apply... 
 
-Instance Policy " + p.defaultInstancePolicy + @" means Apply find nested prefabs, apply their changes separately and then delete them before applying their parent prefab.
+Instance Policy '" + p.defaultInstancePolicy + @"' means 'Apply' will find nested prefabs, apply their changes separately and then remove them from their parent prefab to avoid having them become part of the parent.
 
 NOTE: this behaviour does NOT apply to nested prefabs that aren't managed, e.g. you just added one to the", MessageType.Info);
 						break;
@@ -52,7 +52,7 @@ NOTE: this behaviour does NOT apply to nested prefabs that aren't managed, e.g. 
 					}
 
 					GUI.backgroundColor = Color.green;
-					if(GUILayout.Button(p.numPrefabTypes > 1? "Delete Prefab[s]": "Delete Prefab")) {
+					if(GUILayout.Button(p.supportsMultiplePrefabTypes? "Delete Prefab[s]": "Delete Prefab")) {
 						foreach (var pInst in instances) {
 							if (pInst.instance == null) {
 								continue;
@@ -63,11 +63,11 @@ NOTE: this behaviour does NOT apply to nested prefabs that aren't managed, e.g. 
 				} 
 				else {
 					GUI.backgroundColor = Color.green;
-					if(GUILayout.Button(p.numPrefabTypes > 1? "Edit Prefab[s]": "Edit Prefab")) {
+					if(GUILayout.Button(p.supportsMultiplePrefabTypes? "Edit Prefab[s]": "Edit Prefab")) {
 						instances.Clear ();
 						p.GetPrefabInstances(instances, ensureCreated:true);
 					}
-					if(GUILayout.Button(p.numPrefabTypes > 1? "Edit Prefab[s] and Nested Prefabs": "Edit Prefab and Nested Prefabs")) {
+					if(GUILayout.Button(p.supportsMultiplePrefabTypes? "Edit Prefab[s] and Nested Prefabs": "Edit Prefab and Nested Prefabs")) {
 						p.EditPrefabRecursive ();
 					}
 				}

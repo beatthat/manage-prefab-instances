@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using BeatThat.OnApplyPrefabBehaviours;
 
@@ -8,7 +8,7 @@ namespace BeatThat.ManagePrefabInstances
 	{
 		PrefabInstancePolicy defaultInstancePolicy { get; }
 
-		int numPrefabTypes { get; }
+		bool supportsMultiplePrefabTypes { get; }
 
 		void GetPrefabInstances(ICollection<PrefabInstance> instances, bool ensureCreated = false);
 
@@ -50,7 +50,57 @@ namespace BeatThat.ManagePrefabInstances
 
 			}
 		}
-		#endif
+#endif
+
+		public delegate GameObject AddInstanceDelegate(GameObject prefab);
+
+		public static void FindPrefabInstances(
+			this ManagesPrefabInstances manager, 
+			ICollection<PrefabInstance> instances, 
+			PrefabInstancePolicy defaultInstancePolicy,
+			bool ensureCreated = false, 
+			AddInstanceDelegate addInstanceDelegate = null,
+			Transform parent = null
+		)
+		{
+			using (var foundItems = ListPool<GameObject>.Get())
+            using (var foundObjects = ListPool<GameObject>.Get())
+            using (var prefabTypes = ListPool<PrefabType>.Get())
+            {
+				(parent ?? (manager as Component).transform).GetComponentsInDirectChildren(foundItems, true);
+               
+                manager.GetPrefabTypes(prefabTypes);
+
+                if (ensureCreated && foundItems.Count == 0)
+                {
+                    foreach (var pt in prefabTypes)
+                    {
+                        if (pt.prefab == null)
+                        {
+                            Debug.LogWarning("[" + Time.frameCount + "] encountered null prefab for type " + pt.prefabType);
+                            continue;
+                        }
+
+						var prefab = pt.prefab as GameObject ?? 
+						               (pt.prefab is Component)?(pt.prefab as Component).gameObject: null;
+						
+                        if (prefab == null)
+                        {
+							Debug.LogWarning("[" + Time.frameCount + "] unable to find prefab GameObject");
+                            continue;
+                        }
+						foundItems.Add(addInstanceDelegate(prefab));
+                    }
+                }
+
+                foreach (var c in foundItems)
+                {
+                    foundObjects.Add(c.gameObject);
+                }
+
+				manager.ObjectsToPrefabInstances(foundObjects, prefabTypes, instances, defaultInstancePolicy);
+            }
+        }
 
 		public static void ObjectsToPrefabInstances(this ManagesPrefabInstances mpi, ICollection<GameObject> objects, IList<PrefabType> prefabTypes, ICollection<PrefabInstance> prefabInstances, PrefabInstancePolicy instancePolicy)
 		{
