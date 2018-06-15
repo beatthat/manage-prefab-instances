@@ -1,9 +1,10 @@
-using UnityEngine;
+using BeatThat.Pools;
 using UnityEditor;
+using UnityEngine;
 
 namespace BeatThat.ManagePrefabInstances
 {
-	public static class Ext 
+    public static class Ext 
 	{
 		
 		public static void EditPrefabRecursive(this ManagesPrefabInstances p)
@@ -78,3 +79,5 @@ NOTE: this behaviour does NOT apply to nested prefabs that aren't managed, e.g. 
 		}
 	}
 }
+
+

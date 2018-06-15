@@ -1,9 +1,9 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
 namespace BeatThat.ManagePrefabInstances
 {
-	public struct PrefabInstance 
+    public struct PrefabInstance 
 	{
 		public UnityEngine.Object prefab;
 		public Type prefabType;
@@ -11,3 +11,4 @@ namespace BeatThat.ManagePrefabInstances
 		public PrefabInstancePolicy instancePolicy;
 	}
 }
+

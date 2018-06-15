@@ -6,7 +6,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-scope/your-pkg-name.git"
+    "url": "git+https://github.com/beatthat/manage-prefab-instances.git"
   },
   "files": [
     "index.js",
@@ -18,9 +18,9 @@
   "author": "larrykirschner@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/your-scope/your-pkg-name/issues"
+    "url": "https://github.com/beatthat/manage-prefab-instances/issues"
   },
-  "homepage": "https://github.com/your-scope/your-pkg-name",
+  "homepage": "https://github.com/beatthat/manage-prefab-instances",
   "scripts": {
     "postinstall": "node scripts/postinstall.js",
     "preinstall:test": "rm -f *.tgz",

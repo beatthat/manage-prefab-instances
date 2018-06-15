@@ -1,10 +1,13 @@
 using System.Collections.Generic;
-using UnityEngine;
+using BeatThat.GetComponentsExt;
 using BeatThat.OnApplyPrefabBehaviours;
+using BeatThat.Pools;
+using BeatThat.TransformPathExt;
+using UnityEngine;
 
 namespace BeatThat.ManagePrefabInstances
 {
-	public interface ManagesPrefabInstances  : OnApplyPrefabBehaviour
+    public interface ManagesPrefabInstances  : OnApplyPrefabBehaviour
 	{
 		PrefabInstancePolicy defaultInstancePolicy { get; }
 
@@ -153,4 +156,8 @@ namespace BeatThat.ManagePrefabInstances
 		}
 	}
 }
+
+
+
+
 
